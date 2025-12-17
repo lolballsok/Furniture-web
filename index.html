@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mumbai Furniture Hub | Premium Furniture Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f5f2;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ===== DEVELOPER BANNER (TOP) ===== */
+        .dev-banner {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6572 100%);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .dev-banner a {
+            color: #f39c12;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        
+        .dev-banner a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background-color: #8B4513;
+            padding: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #f39c12;
+        }
+        
+        .logo span {
+            color: #f39c12;
+        }
+        
+        nav {
+            background-color: #A0522D;
+            padding: 12px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0 20px;
+        }
+        
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .nav-menu li a:hover {
+            background-color: #8B4513;
+            color: #f39c12;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ===== HERO SLIDER ===== */
+        .hero-slider {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-1 {
+            background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+        }
+        
+        .slide-2 {
+            background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1558&q=80');
+        }
+        
+        .slide-3 {
+            background-image: url('https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1467&q=80');
+        }
+        
+        .slide-4 {
+            background-image: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 40px;
+        }
+        
+        .slide-overlay h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .dot.active {
+            background-color: #f39c12;
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            padding: 60px 0;
+            background-color: white;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #8B4513;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #f39c12;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .quote-box {
+            background-color: #f8f5f2;
+            padding: 30px;
+            border-left: 5px solid #f39c12;
+            margin: 40px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #8B4513;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        /* ===== CONTACT INFO SECTION ===== */
+        .contact-info-section {
+            padding: 60px 0;
+            background-color: #8B4513;
+            color: white;
+            margin-bottom: 40px;
+            border-radius: 15px;
+        }
+        
+        .contact-info-section .section-title h2 {
+            color: white;
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: #f39c12;
+            margin-bottom: 20px;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-card p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .call-button {
+            display: inline-block;
+            background-color: #f39c12;
+            color: #8B4513;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .call-button:hover {
+            background-color: white;
+            transform: scale(1.05);
+        }
+        
+        /* ===== GOOGLE FORM SECTION ===== */
+        .form-section {
+            padding: 60px 0;
+            background-color: white;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #f8f5f2;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        
+        .form-title {
+            color: #8B4513;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .form-title h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-note {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .form-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .form-button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto 0;
+            background-color: #8B4513;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .form-button:hover {
+            background-color: #A0522D;
+        }
+        
+        /* ===== SOCIAL MEDIA SECTION ===== */
+        .social-section {
+            padding: 40px 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6572 100%);
+            color: white;
+            margin-bottom: 40px;
+            border-radius: 15px;
+        }
+        
+        .social-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #f39c12;
+            transform: translateY(-5px);
+        }
+        
+        .social-info {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 30px;
+        }
+        
+        /* ===== DEVELOPER INFO SECTION ===== */
+        .developer-section {
+            padding: 60px 0;
+            background-color: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .developer-card {
+            background-color: #f8f5f2;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 5px solid #8B4513;
+        }
+        
+        .dev-logo {
+            font-size: 2rem;
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+        
+        .dev-logo span {
+            color: #f39c12;
+        }
+        
+        .developer-card h3 {
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .dev-contact {
+            margin: 20px 0;
+        }
+        
+        .dev-contact p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .dev-contact i {
+            color: #f39c12;
+            width: 20px;
+        }
+        
+        .dev-services {
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .dev-services h4 {
+            color: #8B4513;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .dev-services ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .dev-services li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .dev-services li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 30px;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-slider {
+                height: 400px;
+            }
+            
+            .slide-overlay h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #A0522D;
+                z-index: 1000;
+                padding: 20px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            
+            .hero-slider {
+                height: 300px;
+            }
+            
+            .slide-overlay {
+                padding: 20px;
+            }
+            
+            .slide-overlay h2 {
+                font-size: 1.5rem;
+            }
+            
+            .social-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-info {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .form-iframe {
+                height: 700px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .developer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== DEVELOPER BANNER (TOP) ===== -->
+    <div class="dev-banner">
+        <div class="container">
+            Website developed by <strong>WebCraft Mumbai</strong> | 
+            <a href="https://webcraftmumbai.github.io" target="_blank">Visit our agency site</a>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-couch"></i>
+                Mumbai <span>Furniture</span> Hub
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- ===== NAVIGATION MENU ===== -->
+        <nav>
+            <div class="container nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#address">Address</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact With Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== HERO SLIDER ===== -->
+    <section class="hero-slider" id="home">
+        <div class="slide slide-1 active">
+            <div class="slide-overlay">
+                <h2>Premium Living Room Furniture</h2>
+                <p>Luxurious comfort meets contemporary design</p>
+            </div>
+        </div>
+        <div class="slide slide-2">
+            <div class="slide-overlay">
+                <h2>Modern Bedroom Collections</h2>
+                <p>Transform your bedroom into a sanctuary</p>
+            </div>
+        </div>
+        <div class="slide slide-3">
+            <div class="slide-overlay">
+                <h2>Office & Workspace Solutions</h2>
+                <p>Productivity meets elegance</p>
+            </div>
+        </div>
+        <div class="slide slide-4">
+            <div class="slide-overlay">
+                <h2>Custom Furniture Design</h2>
+                <p>Tailored to your space and style</p>
+            </div>
+        </div>
+        
+        <div class="slider-dots">
+            <div class="dot active" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+            <div class="dot" data-slide="3"></div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our Furniture Store</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>For over 15 years, <strong>Mumbai Furniture Hub</strong> has been providing high-quality, durable, and stylish furniture to homes and offices across Mumbai. We believe that furniture is more than just functional - it's an expression of your personality and lifestyle.</p>
+                    
+                    <p>Our curated collections feature pieces crafted from sustainable materials by skilled artisans. From modern minimalism to classic traditional designs, we have something for every taste and budget.</p>
+                </div>
+                
+                <div class="quote-box">
+                    <p class="quote">"Good furniture improves the quality of your life. It's not just about filling space, but about creating an environment where memories are made."</p>
+                    <p class="quote-author">- Rajesh Mehta, Founder</p>
+                </div>
+                
+                <p>Visit our 5000 sq.ft. showroom in Andheri to experience our collections firsthand. Our design consultants are always available to help you choose pieces that perfectly suit your space.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT INFO SECTION ===== -->
+    <section class="contact-info-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us Directly</h2>
+                <p style="color: rgba(255,255,255,0.8);">We're here to help with all your furniture needs</p>
+            </div>
+            
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us Now</h3>
+                    <p>Speak directly with our furniture consultants</p>
+                    <p style="font-size: 1.5rem; font-weight: 700;">+91 98765 43210</p>
+                    <a href="tel:+919876543210" class="call-button">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Send us your inquiries or design requests</p>
+                    <p style="font-size: 1.2rem; font-weight: 600;">info@mumbaifurniturehub.com</p>
+                    <a href="mailto:info@mumbaifurniturehub.com" class="call-button">
+                        <i class="fas fa-envelope"></i> Send Email
+                    </a>
+                </div>
+                
+                <div class="contact-card" id="address">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Our Showroom</h3>
+                    <p>Open Monday to Saturday, 10 AM to 8 PM</p>
+                    <p style="font-size: 1.1rem;">Shop No. 45, Supreme Business Park,<br>
+                    Andheri East, Mumbai - 400069</p>
+                    <a href="https://maps.google.com/?q=Andheri+East+Mumbai" target="_blank" class="call-button">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GOOGLE FORM SECTION ===== -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-title">
+                <h3>Request a Quote or Catalog</h3>
+                <p>Fill out this simple form and we'll contact you within 2 hours</p>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-note">
+                    <p><i class="fas fa-info-circle" style="color: #f39c12; margin-right: 8px;"></i>
+                    All fields marked with * are required. We respect your privacy and never share your information.</p>
+                </div>
+                
+                <!-- REPLACE THIS IFRAME WITH YOUR ACTUAL GOOGLE FORM LINK -->
+                <iframe class="form-iframe" 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSeK0Dcb-gKXwUK1gav6n82U_Gr2QL6ANgg4jDK6bbWBpTJwLg/viewform?usp=header"
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                    Loading…
+                </iframe>
+                
+                <!-- Alternative button if iframe doesn't work -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeK0Dcb-gKXwUK1gav6n82U_Gr2QL6ANgg4jDK6bbWBpTJwLg/viewform?usp=header" 
+                   target="_blank" 
+                   class="form-button">
+                    <i class="fas fa-external-link-alt"></i> Open Form in New Tab
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOCIAL MEDIA SECTION ===== -->
+    <section class="social-section">
+        <div class="container social-container">
+            <div class="social-info">
+                <h3 class="social-title">Connect With Us</h3>
+                <p>Follow us on social media for daily updates, new arrivals, and exclusive discounts. See our furniture in real homes through customer photos!</p>
+                <p style="margin-top: 20px; font-size: 1.1rem;">
+                    <i class="fas fa-hashtag" style="color: #f39c12; margin-right: 10px;"></i>
+                    <strong>Tag us:</strong> #MumbaiFurnitureHub
+                </p>
+            </div>
+            
+            <div>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:info@mumbaifurniturehub.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+919876543210"><i class="fas fa-phone"></i></a>
+                </div>
+                <p style="margin-top: 10px; opacity: 0.9;">DM us for quick queries on Instagram/WhatsApp</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DEVELOPER INFO SECTION ===== -->
+    <section class="developer-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Website Developed By</h2>
+                <p>Professional web development services for your business</p>
+            </div>
+            
+            <div class="developer-grid">
+                <div class="developer-card">
+                    <div class="dev-logo">
+                        <i class="fas fa-code"></i> Web<span>Craft</span> Mumbai
+                    </div>
+                    <h3>Your Web Development Partner</h3>
+                    <p>We specialize in creating affordable, responsive, and effective websites for Mumbai-based businesses.</p>
+                    
+                    <div class="dev-contact">
+                        <p><i class="fas fa-user"></i> Contact: Rohan Sharma</p>
+                        <p><i class="fas fa-envelope"></i> contact@webcraftmumbai.com</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43211</p>
+                        <p><i class="fas fa-globe"></i> webcraftmumbai.github.io</p>
+                    </div>
+                </div>
+                
+                <div class="developer-card">
+                    <div class="dev-services">
+                        <h4>Our Web Development Services</h4>
+                        <ul>
+                            <li>Business Websites (Restaurants, Shops, Services)</li>
+                            <li>E-commerce Online Stores</li>
+                            <li>Portfolio & Professional Websites</li>
+                            <li>Website Redesign & Modernization</li>
+                            <li>Mobile-Friendly Responsive Design</li>
+                            <li>Google Business Profile Setup</li>
+                            <li>Basic SEO Optimization</li>
+                            <li>Social Media Integration</li>
+                            <li>Website Maintenance & Updates</li>
+                            <li>Free Website Training</li>
+                        </ul>
+                        
+                        <div style="margin-top: 25px; padding: 15px; background-color: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                            <p style="color: #8B4513; font-weight: 600;">
+                                <i class="fas fa-bolt" style="color: #f39c12;"></i>
+                                Special Offer: First website FREE for Mumbai startups
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div style="font-size: 2rem; margin-bottom: 20px; color: #f39c12;">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <p>Mumbai Furniture Hub | Premium Furniture Since 2008</p>
+                <p style="margin: 15px 0; opacity: 0.9;">Andheri East, Mumbai | Open: Mon-Sat 10AM-8PM</p>
+                
+                <div style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">
+                    <p>Website developed by <strong>WebCraft Mumbai</strong> - Student-led web development agency</p>
+                    <p>Need a website for your business? Contact us at contact@webcraftmumbai.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Mumbai Furniture Hub. All rights reserved.</p>
+                <p>Website designed and developed by WebCraft Mumbai</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // ===== IMAGE SLIDER =====
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        function showSlide(n) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Dot click events
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                document.getElementById('navMenu').classList.remove('active');
+                
+                const targetId = this.getAttribute('href');
+                if(targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // ===== FORM ALTERNATIVE NOTICE =====
+        console.log("To connect your actual Google Form:");
+        console.log("1. Create form at forms.google.com");
+        console.log("2. Click Send → Get link → Copy embed HTML");
+        console.log("3. Replace the iframe src with your form link");
+    </script>
+</body>
+</html>
